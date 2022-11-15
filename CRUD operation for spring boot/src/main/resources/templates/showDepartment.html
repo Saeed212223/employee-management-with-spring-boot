@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Employee</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body class="bg-dark text-white" >
+<div class="container my-2" align="center">
+
+    <h3>Department List</h3>
+    <a th:href="@{/addDepartment}" class="btn btn-warning btn-sm mb-3" >Add Department</a>
+    <a th:href="@{/showTasks}" class="btn btn-warning btn-sm mb-3" > List Of Tasks </a>
+    <a th:href="@{/}" class="btn btn-warning btn-sm mb-3" >List Of Employee </a>
+    <table style="width:80%" border="1"
+           class = "table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>DepartmentName</th>
+            <th>Description</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="department:${alldplist}">
+            <td th:text="${department.name}"></td>
+            <td th:text="${department.Description}"></td>
+            <td><a th:href="@{/updateDepartment/{id}(id=${department.id})}" class="btn btn-success">Update</a> </td>
+            <td><a th:href="@{/deleteDepartment/{id}(id=${department.id})}" class="btn btn-danger">Delete</a> </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
